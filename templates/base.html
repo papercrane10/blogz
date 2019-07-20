@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <title></title>
+    <style type="text/css">
+        .error {
+            color: red;
+        }
+        
+        h1 {
+            align-content: center
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Build-a-blog</h1>
+    <p>
+        <a href="/blog">Blog Home</a>
+        <a href="/newpost">New Blog Post</a>
+    </p>
+
+
+    {% block content %}
+
+    <hr />
+
+</body>
+
+</html>
+{% endblock %}

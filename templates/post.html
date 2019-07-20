@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block content %}
+
+<form method="post">
+    <table>
+        <tbody>
+            <tr>
+                <td><label>Blog Post Title</label></td>
+            </tr>
+            <tr>
+                <td><input name="post_name" type="text" value='{{post_name}}' />
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="error">{{title_error}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td><label>Enter Post</label></td>
+            </tr>
+            <tr>
+                <td><textarea name="post_content" value='Enter Blog Post Here' char-limit='1500' value='{{post_content}}'></textarea>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p class="error">{{post_error}}</p>
+                </td>
+            </tr>
+            <tr>
+                <td><input type="hidden" name="blogid" /><input type="submit" value='Post' />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</form>
+{% endblock %}

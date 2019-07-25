@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% block content %}
+
+<hr /> {% if all_users|length == 0 %}
+
+<p>No Users Yet</p>
+{% else %}
+
+<ul style="list-style-type:none;">
+    {% for users in all_users %}
+    <li>
+        <h2>
+            <a name="blogid" value="{{users.id}}" href="/blog?id={{users.id}}" method="GET"> {{users.username}}</a>
+        </h2>
+
+        <hr>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endif %} {% endblock %}

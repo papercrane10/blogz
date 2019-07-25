@@ -1,4 +1,6 @@
 {% extends "base.html" %} {% block content %}
-<h2><a href="/blog?id={{post.id}}"> {{post.post_name}}</a> </h2>
+<h2> {{post.post_name}} </h2>
+<p>Author:
+    <a href="/blog?id={{username.id}}">{{username.username}}</a></p>
 <p>{{post.post_content}}</p>
 <hr>{% endblock %}

@@ -1,15 +1,16 @@
 {% extends "base.html" %} {% block content %}
 
-<hr /> {% if post|length == 0 %}
+<hr /> {% if all_users|length == 0 %}
 
-<p>No posts yet</p>
+<p>No Users Yet</p>
 {% else %}
 
 <ul style="list-style-type:none;">
-    {% for posts in post %}
+    {% for users in all_users %}
     <li>
-        <h2><a name="blogid" value="{{post.id}}" href="/blog?id={{posts.id}}" method="GET"> {{posts.post_name}}</a> </h2>
-        <p>{{posts.post_content}}</p>
+        <h2> {{users.username}}</a>
+        </h2>
+
         <hr>
     </li>
     {% endfor %}

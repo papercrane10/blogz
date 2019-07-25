@@ -5,14 +5,11 @@
 <p>No Users Yet</p>
 {% else %}
 
-<ul style="list-style-type:none;">
+<ul>
     {% for users in all_users %}
     <li>
-        <h2>
-            <a name="blogid" value="{{users.id}}" href="/blog?id={{users.id}}" method="GET"> {{users.username}}</a>
-        </h2>
+        <a name="blogid" value="{{users.id}}" href="/blog?user={{users.id}}" method="GET"> {{users.username}}</a>
 
-        <hr>
     </li>
     {% endfor %}
 </ul>

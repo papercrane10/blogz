@@ -44,7 +44,11 @@ def index():
     username = User.query.filter_by(username=session['username']).first()
     if request.method == 'GET':
         blogid = request.args.get('id')
-        post = Blog.query.all()
+        userid = request.args.get('user')
+        #post = Blog.query.all()
+        #username = User.query.filter_by(id=post.owner_id).all()
+        post = db.session.query(Blog, User).outerjoin(User, Blog.owner_id==User.id).all()
+
         #username = User.query.filter_by(id=post.owner_id).first()
         if blogid is not None:
             post = Blog.query.filter_by(id=blogid).first()
@@ -52,10 +56,14 @@ def index():
 
             return render_template('single_post.html', post=post, username=username)
         else:
-            username=User.query.all()
-            
-            return render_template('all_posts.html', post=post, username=username)
-    return render_template('all_posts.html', post=post, username=username)
+            if userid is not None:
+                post = Blog.query.filter_by(owner_id=userid).all()
+                username = User.query.filter_by(id=userid).first()
+                return render_template('singleuser.html', post=post, username=username)
+            else:
+               
+               return render_template('all_posts.html', post=post)
+    return render_template('all_posts.html', post=post)
         
         
    

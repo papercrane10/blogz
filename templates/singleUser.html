@@ -1,0 +1,21 @@
+{% extends "base.html" %} {% block content %}
+<h1>{{username.username}}'s Page</h1>
+<hr /> {% if post|length == 0 %}
+
+<p>No posts yet</p>
+{% else %}
+
+<ul style="list-style-type:none;">
+    {% for posts in post %}
+    <li>
+        <h2><a href="/blog?id={{posts.id}}"> {{posts.post_name}}</a> </h2>
+        <p>Author:
+            <a href="/blog?user={{username.id}}">{{username.username}}</a></p>
+        <p>{{posts.post_content}}</p>
+        <hr>
+    </li>
+    {% endfor %}
+
+</ul>
+
+{% endif %} {% endblock %}

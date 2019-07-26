@@ -34,10 +34,20 @@ class User(db.Model):
 
 @app.before_request
 def require_login():
-    allowed_routes = ['login', 'signup', 'index']
+    allowed_routes = ['login', 'signup', 'home']
     if request.endpoint not in allowed_routes and 'username' not in session:
         return redirect('/login')
-       
+
+@app.route('/')
+def home():
+    all_users=User.query.all()
+    return render_template('index.html', all_users=all_users)
+@app.route('/logout')
+def logout():
+    
+    del session['username']
+
+    return redirect('/')       
 
 @app.route("/blog", methods=['GET'])
 def index():
@@ -178,17 +188,6 @@ def login():
     else:
         return render_template("login.html")       
 
-
-@app.route('/')
-def home():
-    all_users=User.query.all()
-    return render_template('index.html', all_users=all_users)
-@app.route('/logout')
-def logout():
-    
-    del session['username']
-
-    return redirect('/blog')
 
 if __name__ == '__main__':
     app.run()
